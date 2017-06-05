@@ -362,7 +362,9 @@ foodApp.generateGrid = function () {
   $('body').css({
     "background": 'linear-gradient(rgba(105, 210, 231, 0.3), rgba(105, 210, 231, 0.3)) center center / cover' });
   if (foodApp.likedRecipes.length === 0) {
-    var $emptyList = $('<h1>').text('No saved recipes');
+    var $emptyList = $('<h1>').css({
+      "text-align": "center"
+    }).text('No saved recipes').append($btnDiv);
     $('.container').append($emptyList);
   } else {
     // Create a grid container and append it to the dom
