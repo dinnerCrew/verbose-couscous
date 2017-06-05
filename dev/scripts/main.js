@@ -119,16 +119,11 @@ foodApp.homePageEvents = function (){
     let loadingGif = $('<img>')
                       .attr({
                         'class':'loading-gif',
-                        'src': '../assets/loading_bk.gif'
-                      })
-                      .css({
-                        'position': 'relative',
-                        'top': '350px',
-                        'left': '45%'
+                        'src': 'assets/loading_bk.gif'
                       });
 
     $('body').css({
-      "background": 'linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.2)), url(../assets/kitchen_background.jpg) no-repeat'
+      "background": 'linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.2)), url(assets/kitchen_background.jpg) no-repeat'
     });
     $('.container').append(loadingGif);
     foodApp.searchRecipe(this.userFoodType, this.userTimeChoiceInSeconds,this.globalRequestCount, 0);
@@ -150,7 +145,7 @@ foodApp.searchRecipe = function(foodType, maxTime, startFrom) {
 			q: foodType,
   			maxTotalTimeInSeconds: maxTime,
 			maxResult: 100,
-			start: startFrom+'/'
+			start: startFrom,
 		}
 	})
 	.then(function (data, recipeId){
@@ -398,20 +393,26 @@ foodApp.generateGrid = function() {
   $('.container').empty();
   let $backHomeBtn = $('<button>')
                       .attr('class', 'backHome-btn')
-                      .text('Back Home')
+                      .text('Home')
                       .on('click', function() {
                           foodApp.generateHomePage();
                       });
+  let $btnDiv = $('<div class="button">').append($backHomeBtn);
 
-  let $savedCollection = $('<h1>').text('Saved Collection');
+  let $savedCollection = $('<h1 class="savedCollection">').text('Saved Collection');
   // Remove previous body style
   $('body').removeAttr( 'style' );
+
+  // #607D8B, rgba(0, 0, 0, 0.63) 
   $('body').css({
-      "background": 'linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url(../../assets/gridBG.jpg) center/cover',
-      "height": "100vh"});
+      "background": 'linear-gradient(rgba(105, 210, 231, 0.3), rgba(105, 210, 231, 0.3)) center center / cover'});
   if (foodApp.likedRecipes.length === 0) {
     let $emptyList = $('<h1>')
-                  .text('No saved recipes');
+    			  .css({
+    			  	"text-align": "center"
+    			  })
+                  .text('No saved recipes')
+                  .append($btnDiv);
     $('.container').append($emptyList);
   }
   else {
@@ -421,7 +422,7 @@ foodApp.generateGrid = function() {
     foodApp.likedRecipes.forEach((recipe) => {
       $gridContainer.append(foodApp.generateGridItem(recipe));
     });
-    $('.container').append($savedCollection, $backHomeBtn, $gridContainer);
+    $('.container').append($savedCollection, $gridContainer, $btnDiv);
   }
 }
 
@@ -457,8 +458,7 @@ foodApp.generateGridItem = function(recipeObj) {
 
   let $sourceUrl = $('<button>')
   				  .attr('class', 'savedCardSml__sourceUrl')
-  				  .text('Find More')
-
+  				  .text('See More')
   $savedCardSml.append($name,$authorsName, $time, $rating, $linkBtn, $sourceUrl);
 
 //

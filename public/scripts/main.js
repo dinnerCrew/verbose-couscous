@@ -5,8 +5,8 @@ var foodApp = {};
 foodApp.userFoodType = "";
 
 foodApp.globalRequestCount = 0;
-foodApp.baseUrl = "http://api.yummly.com/v1/api/recipes";
-foodApp.baseUrlTwo = "http://api.yummly.com/v1/api/recipe/";
+foodApp.baseUrl = "https://api.yummly.com/v1/api/recipes";
+foodApp.baseUrlTwo = "https://api.yummly.com/v1/api/recipe/";
 foodApp.id = '34cb1a7b';
 foodApp.key = 'c6a456b06c87490207e4863b23095a4a';
 foodApp.foodTypes = ['pasta', 'sushi', 'stir-fry', 'taco', 'pizza', 'curry'];
@@ -114,15 +114,11 @@ foodApp.homePageEvents = function () {
     // Make request and populate container with overlay content
     var loadingGif = $('<img>').attr({
       'class': 'loading-gif',
-      'src': '../../assets/loading_bk.gif'
-    }).css({
-      'position': 'relative',
-      'top': '350px',
-      'left': '45%'
+      'src': 'assets/loading_bk.gif'
     });
 
     $('body').css({
-      "background": 'linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.2)), url(../../assets/kitchen_background.jpg) no-repeat'
+      "background": 'linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.2)), url(assets/kitchen_background.jpg) no-repeat'
     });
     $('.container').append(loadingGif);
     foodApp.searchRecipe(_this.userFoodType, _this.userTimeChoiceInSeconds, _this.globalRequestCount, 0);
@@ -354,18 +350,22 @@ foodApp.generateGrid = function () {
 
   // Remove any previous generated content
   $('.container').empty();
-  var $backHomeBtn = $('<button>').attr('class', 'backHome-btn').text('Back Home').on('click', function () {
+  var $backHomeBtn = $('<button>').attr('class', 'backHome-btn').text('Home').on('click', function () {
     foodApp.generateHomePage();
   });
+  var $btnDiv = $('<div class="button">').append($backHomeBtn);
 
-  var $savedCollection = $('<h1>').text('Saved Collection');
+  var $savedCollection = $('<h1 class="savedCollection">').text('Saved Collection');
   // Remove previous body style
   $('body').removeAttr('style');
+
+  // #607D8B, rgba(0, 0, 0, 0.63) 
   $('body').css({
-    "background": 'linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url(../../assets/gridBG.jpg) center/cover',
-    "height": "100vh" });
+    "background": 'linear-gradient(rgba(105, 210, 231, 0.3), rgba(105, 210, 231, 0.3)) center center / cover' });
   if (foodApp.likedRecipes.length === 0) {
-    var $emptyList = $('<h1>').text('No saved recipes');
+    var $emptyList = $('<h1>').css({
+      "text-align": "center"
+    }).text('No saved recipes').append($btnDiv);
     $('.container').append($emptyList);
   } else {
     // Create a grid container and append it to the dom
@@ -373,7 +373,7 @@ foodApp.generateGrid = function () {
     foodApp.likedRecipes.forEach(function (recipe) {
       $gridContainer.append(foodApp.generateGridItem(recipe));
     });
-    $('.container').append($savedCollection, $backHomeBtn, $gridContainer);
+    $('.container').append($savedCollection, $gridContainer, $btnDiv);
   }
 };
 
@@ -394,8 +394,7 @@ foodApp.generateGridItem = function (recipeObj) {
 
   var $linkBtn = $('<a>').attr('class', 'savedCardSml__linkBtn');
 
-  var $sourceUrl = $('<button>').attr('class', 'savedCardSml__sourceUrl').text('Find More');
-
+  var $sourceUrl = $('<button>').attr('class', 'savedCardSml__sourceUrl').text('See More');
   $savedCardSml.append($name, $authorsName, $time, $rating, $linkBtn, $sourceUrl);
 
   //
