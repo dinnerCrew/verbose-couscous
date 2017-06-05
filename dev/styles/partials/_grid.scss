@@ -133,15 +133,16 @@
 }
 @media (max-width: 480px){
 	.savedCollection {
-	text-align: center;
-	text-transform: uppercase;
-	display: inline-block;
-	border-bottom: 5px solid $primary-color;
-	font-family: $font-family-text;
-	letter-spacing: 1px;
-	color: black;
-    display: inline-block;
-    // width: 450px;
-    padding-bottom: 10px;
+		text-align: center;
+		text-transform: uppercase;
+		display: inline-block;
+		border-bottom: 5px solid $primary-color;
+		font-family: $font-family-text;
+		letter-spacing: 1px;
+		color: black;
+	    display: inline-block;
+	    padding-bottom: 10px;
+		width: 100%;
 	}
 }
+
