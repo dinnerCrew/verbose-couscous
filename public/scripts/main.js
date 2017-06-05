@@ -302,9 +302,8 @@ foodApp.generateCard = function (data) {
   var $ingredientItem = $('<div>').attr('class', 'ingredientList__ingredientItem');
   data.ingredients.forEach(function (data) {
     $ingredientItem.append('<li>' + data + '</li>');
-    $ingredientList.append($ingredientItem
+    $ingredientList.append($ingredientItem);
     // console.log(data)
-    );
   });
 
   var $newRecipeBtn = $('<div>').attr('class', 'recipeCard__newRecipe-btn').append(foodApp.newRecipeButton('Not feeling it!'));
