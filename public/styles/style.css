@@ -457,17 +457,16 @@ a {
       font-size: 60px;
       font-family: "Old Standard TT", serif; }
   #homePage img {
-    width: 25%; }
+    width: 40%; }
   #homePage .timeContainer {
     position: relative;
     margin-bottom: 75px; }
     #homePage .timeContainer #handle {
       position: absolute;
-      left: 37.5%;
+      left: 30%;
       top: -2%;
       -webkit-transition: all 0.8s;
       transition: all 0.8s;
-      width: 25%;
       height: 103%; }
   #homePage button {
     outline: none;
@@ -489,7 +488,7 @@ a {
     transition: all 0.3s ease; }
     #homePage button:hover {
       color: white;
-      letter-spacing: 2px; }
+      letter-spacing: 1.5px; }
     #homePage button:after {
       content: "SUBMIT"; }
 
@@ -785,26 +784,29 @@ a {
     -webkit-box-shadow: 3px 3px 3px black;
             box-shadow: 3px 3px 3px black; }
 
-@media (max-width: 975px) {
+@media (max-width: 990px) {
+  .grid {
+    width: 90%; }
   .grid .grid-item {
-    width: 45%; } }
+    width: 48%;
+    margin: 1% 1%; } }
 
 @media (max-width: 675px) {
   .grid .grid-item {
-    width: 70%;
-    margin-left: 10%; } }
+    width: 100%;
+    margin: 10px auto; } }
 
-@media (max-width: 450px) {
-  .grid .grid-item {
-    width: 90%;
-    margin: 0 0 8% 0; } }
-
-@media (max-width: 400px) {
-  .grid .grid-item {
-    width: 95%;
-    margin-left: 3%;
-    padding: 0.75em; }
+@media (max-width: 480px) {
   .savedCollection {
+    text-align: center;
+    text-transform: uppercase;
+    display: inline-block;
+    border-bottom: 5px solid #69D2E7;
+    font-family: "Old Standard TT", serif;
+    letter-spacing: 1px;
+    color: black;
+    display: inline-block;
+    padding-bottom: 10px;
     width: 100%; } }
 
 .loading-gif {

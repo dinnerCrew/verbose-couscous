@@ -49,17 +49,17 @@
 		}
 	}
 	img {
-		width: 25%;
+		width: 40%;
 	}
 	.timeContainer {
 		position: relative;
 		margin-bottom: 75px;
 		#handle{
 			position: absolute;
-			left: 37.5%;
+			left: 30%;
 			top: -2%;
 			transition: all 0.8s;
-			width: 25%;
+			// width: 42%;
 			height: 103%;
 			
 		}
@@ -89,7 +89,7 @@
 	  &:hover {
 	    color:white;
 	    // background: $accent-color;
-	    letter-spacing: 2px ;
+	    letter-spacing: 1.5px;
 	  }
 	  &:active {
 	    
